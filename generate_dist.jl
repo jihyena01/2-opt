@@ -13,7 +13,6 @@ function generate_distance_matrix(n_nodes)
         end
     end
     
-    
-    dist_matrix = round.(Int, 1000 .* dist_matrix)
+
     return X, Y, dist_matrix
 end
