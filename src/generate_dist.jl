@@ -1,4 +1,13 @@
 
+function tour_length(tour, dist)
+    tour_len = 0
+    for i in 1:(length(tour))
+        j = i + 1 > length(tour) ? 1 : i + 1
+        tour_len += dist[tour[i], tour[j]]
+    end
+    return tour_len
+end
+
 
 function generate_distance_matrix(n_nodes)
     X = rand(n_nodes) .* 1000
