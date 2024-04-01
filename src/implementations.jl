@@ -7,8 +7,9 @@ function two_opt_first_implement(tour, dist)
     tour_len = tour_length(tour, dist)
     n_nodes = length(tour)
     cur_edge1, cur_edge2 = (0, 0), (0, 0)
+    
     for i in 1:(n_nodes-1)
-        for j in (i+2):(n_nodes-1)
+        for j in (i+2):(n_nodes)
             new_tour = copy(tour)
             cur1 = i
             cur2 = i+1
@@ -26,12 +27,12 @@ function two_opt_first_implement(tour, dist)
             new_tour_len = tour_length(new_tour, dist)
 
             if new_tour_len < tour_len
-                @show(tour)
+                #@show(tour)
                 tour = new_tour
                 tour_len = new_tour_len
                 tour_edges = [(tour[i], tour[i+1]) for i in 1:(length(tour)-1)]
-                @show(cur_edge1, cur_edge2)
-                @show(tour)
+                #@show(cur_edge1, cur_edge2)
+                #@show(tour)
                 #print(new_edge1, new_edge2, tour, tour_len)
             end
         end
@@ -47,6 +48,7 @@ function two_opt_second_implement(tour, dist)
     n_nodes = length(tour)
     tour_len = 0
     cur_edge1, cur_edge2 = (0, 0), (0, 0)
+
     for i in 1:(n_nodes-1)
         for j in (i+2):(n_nodes)
             cur1 = i
@@ -63,14 +65,14 @@ function two_opt_second_implement(tour, dist)
                 #print(improvement)
 
                 if improvement > 0
-                    @show(tour)
+                    #@show(tour)
                     middle_part = reverse(tour[(cur2):(new1)])
                     tour[(cur2):(new1)] = middle_part
                     tour_len = tour_length(tour, dist)
                     tour_edges = [(tour[i], tour[i+1]) for i in 1:(length(tour)-1)]
 
-                    @show(cur_edge1, cur_edge2)
-                    @show(tour)
+                    #@show(cur_edge1, cur_edge2)
+                    #@show(tour)
                 end
             end
             
